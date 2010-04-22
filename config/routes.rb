@@ -1,5 +1,9 @@
 Spots::Application.routes.draw do |map|
-  resources :spots
+  resources :spots do
+    resources :comments
+  end
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

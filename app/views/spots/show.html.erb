@@ -33,5 +33,20 @@
 	<!-- the map is here -->
 </div>
 
+<br />
+<h2>Comments</h2>
+<% if @spot.comments.length > 0 %>
+	<%= render :partial => "comments/comment", :collection => @spot.comments %>
+<% else %>
+	There are currently no comments for this spot. Feel free to add one.
+<% end %>
+
+<br />
+
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+<br />
+
 <%= link_to 'Edit', edit_spot_path(@spot) %> |
 <%= link_to 'Back', spots_path %>

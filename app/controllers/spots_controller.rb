@@ -14,7 +14,6 @@ class SpotsController < ApplicationController
   # GET /spots/1.xml
   def show
     @spot = Spot.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @spot }
