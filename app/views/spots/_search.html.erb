@@ -1,0 +1,11 @@
+<% form_tag spots_path, :method => :get, :remote => true do %>
+  <p>
+  	<%= text_field_tag :search, params[:search] %>
+	<div id="Submit">
+		<%= submit_tag "Search", :name => nil %>
+	</div>
+	<div id="message">
+		<%= render 'message' %>
+	</div>
+  </p>
+<% end -%>
