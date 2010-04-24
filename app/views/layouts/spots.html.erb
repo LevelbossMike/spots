@@ -7,10 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="container">
+	<p class="notice"><%= notice %></p>	
+	<div id="header">
+		Weberschule Gefahrenstellen
+	</div>
+	<%= yield %>
 
-<p class="notice"><%= notice %></p>
-
-<%= yield %>
-
+	<%= render :partial => 'footer' %>
+</div><!--end container-->
 </body>
 </html>

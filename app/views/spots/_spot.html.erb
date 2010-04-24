@@ -1,8 +1,13 @@
+<li>
 <div id="spot">
 <p><%= link_to (spot.name), spot %></p>
 Description:
 <p><%= spot.description  %></p>
-<%= link_to 'Edit', edit_spot_path(spot) %> |
-<%= link_to 'Destroy', spot, :confirm => 'Are you sure?', :method => :delete %>
+<div id="EditDestroy">
+	<%= link_to 'Edit', edit_spot_path(spot) %> |
+	<%= link_to 'Destroy', spot, :confirm => 'Are you sure?', :method => :delete %>	
 </div>
+
+</div>
+</li>
 

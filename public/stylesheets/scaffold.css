@@ -1,9 +1,8 @@
-body { background-color: #fff; color: #333; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+body, p, ol, ul , td {
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 18px;
 }
 
 pre {
@@ -63,3 +62,31 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+/* this is my own css */
+html {
+	background-image: url('/images/bg.png');
+	background-repeat:repeat-x;
+}
+#container {
+	width: 800px;
+	padding:5px;
+	margin: 3em auto 
+}
+#map {
+	border: 5px solid white;
+	margin: auto;
+}
+#footer {
+	font-size: 10px;
+	margin: 20px 0px;
+}
+
+#footer li {
+	display: inline;
+}
+
+
+
+
+

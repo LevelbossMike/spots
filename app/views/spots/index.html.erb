@@ -8,13 +8,18 @@
 
 <h1>Listing spots</h1>
 <div id="map" style="width: 600px; height: 500px"></div>
-<%= link_to 'New spot', new_spot_path %>
+<%= button_to 'Add a Spot', new_spot_path, :method => :get %>
 <br />
 <h2>Spots</h2>
-<div id="spots">
-<%= render :partial => "spot", :collection => @spots %>
-</div>
-<%= render :partial => "search" %>
 
+<div id="spots">
+	<%= render :partial => "spot", :collection => @spots %>
+</div>
+
+
+
+<!-- just leave this alone for some time>
+<%= render :partial => "search" %>
+</!-->
 
 
