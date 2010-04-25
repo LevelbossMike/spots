@@ -95,11 +95,21 @@ html {
 .spot{
 	min-height: 150px;
 	float: left;
-	margin-right: 16px;
-	width: 250px;
+	margin-right: 25px;
+	width: 175px;
+	overflow:hidden;
+}
+.spot #photo{
+	min-height:200px;
 }
 
-#menu{
+.spot #description{
+	overflow:hidden;
+	min-height: 100px;
+	max-height: 100px;
+}
+
+.spot #menu{
 	text-align: right;
 	font-size: 10px;
 }
