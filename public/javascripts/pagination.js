@@ -1,4 +1,4 @@
 $(document).ready(function() {
-	alert("dom is loaded")
+	//alert("dom is loaded")
 });
 

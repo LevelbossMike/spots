@@ -2,8 +2,9 @@ class SpotsController < ApplicationController
   # GET /spots
   # GET /spots.xml
   def index
-    @spots = Spot.all
-
+    #@spots = Spot.all
+    @spots = Spot.paginate :page => params[:page], :order => 'created_at DESC'
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @spots }

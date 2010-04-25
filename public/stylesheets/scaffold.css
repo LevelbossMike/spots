@@ -85,7 +85,28 @@ html {
 #footer li {
 	display: inline;
 }
+#spots{
+	overflow:hidden;
+}
+#spots li {
+	display: inline;
+}
 
+.spot{
+	min-height: 150px;
+	float: left;
+	margin-right: 16px;
+	width: 250px;
+}
+
+#menu{
+	text-align: right;
+	font-size: 10px;
+}
+#pagination {
+	margin-top: 10px;
+	text-align:center;
+}
 
 
 

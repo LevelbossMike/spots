@@ -6,16 +6,19 @@
 	var spots=<%= raw @spots.to_json%>;
 </script>
 <!-->End of Javascript</!-->
-
 <h1>Listing spots</h1>
 <div id="map" style="width: 600px; height: 500px"></div>
 <%= button_to 'Add a Spot', new_spot_path, :method => :get %>
 <br />
-<h2>Spots</h2>
-
 <div id="spots">
+	<h2>Spots</h2>
 	<%= render :partial => "spot", :collection => @spots %>
 </div>
+<div id="pagination">
+	<%= will_paginate @spots %>
+</div>
+
+
 
 
 
