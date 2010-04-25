@@ -8,7 +8,7 @@ var zoomVal = 17;
 
 function init(){	
 	var cloudmade = new CM.Tiles.CloudMade.Web({key: '8ad01bc75dc44e1e892962e5a81481f3'});
-    var map = new CM.Map('map', cloudmade);
+    var map = new CM.Map('form_map', cloudmade);
 	<!-- this sets center of map to coordinates of Weberschule -->
 	centerCoords = new CM.LatLng(centerLat, centerLng);
     map.setCenter(centerCoords, zoomVal);

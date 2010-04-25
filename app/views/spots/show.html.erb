@@ -1,52 +1,37 @@
-
+<div id="formular">
 <%= javascript_include_tag 'detail_map' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
 </script>
-<p>
-  <b>Name:</b>
-  <%= @spot.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @spot.description %>
-</p>
-
-<p>
-  <b>Lat:</b>
-  <%= @spot.lat %>
-</p>
-
-<p>
-  <b>Lng:</b>
-  <%= @spot.lng %>
-</p>
-
-<p>
-	<b>This is a picture of the spot:</b><br />
-	<%= image_tag @spot.photo.url(:medium) %>
-</p>
-<b>This is the spot on a map:</b><br />
-<div id="map" style="width: 300px; height: 300px">
-	<!-- the map is here -->
+<div id="spotInfo">
+	<p>
+	  <b>Name:</b>
+	  <%= @spot.name %>
+	</p>
+	<p>
+	  <b>Description:</b>
+	  <%= @spot.description %>
+	</p>
+	<p>
+		<b>This is a picture of the spot:</b><br />
+		<%= image_tag @spot.photo.url(:medium) %>
+	</p>
+	<h2>Comments</h2>
+	<% if @spot.comments.length > 0 %>
+		<%= render :partial => "comments/comment", :collection => @spot.comments %>
+	<% else %>
+		There are currently no comments for this spot. Feel free to add one.
+	<% end %>
+	<h2>Add a comment:</h2>
+		<%= render "comments/form" %>
+	<br />
 </div>
 
-<br />
-<h2>Comments</h2>
-<% if @spot.comments.length > 0 %>
-	<%= render :partial => "comments/comment", :collection => @spot.comments %>
-<% else %>
-	There are currently no comments for this spot. Feel free to add one.
-<% end %>
-
-<br />
-
-
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
-<br />
-
+<b>This is the spot on a map:</b><br />
+<div id="detail_map" style="width: 300px; height: 300px">
+	<!-- the map is here -->
+</div>
+</div>
 <%= link_to 'Edit', edit_spot_path(@spot) %> |
 <%= link_to 'Back', spots_path %>

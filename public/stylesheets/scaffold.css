@@ -107,6 +107,30 @@ html {
 	margin-top: 10px;
 	text-align:center;
 }
+#fields {
+	float:left;
+	margin-right: 2em;
+}
+#form_map{
+	margin: 2em;
+	border: 5px solid white;
+}
+#formular {
+	overflow: hidden;
+}
+.hidden {
+	display: none;
+}
+#detail_map{
+	margin:2em;
+	border: 5px solid white;
+}
+
+#spotInfo {
+	float:left;
+	width:400px;
+	margin:2em;
+}
 
 
 

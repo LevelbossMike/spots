@@ -1,11 +1,14 @@
 <%= javascript_include_tag 'form_map' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
-	var spots=<%= raw @spot.to_json%>;
+	var spot=<%= raw @spot.to_json%>;
 </script>
-
+	
 <%= form_for(@spot, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
+
+<div id="fields">
+	
 
   <div class="field">
     <%= f.label :name %><br />
@@ -16,23 +19,24 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :lat %><br />
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.label :lng %><br />
-    <%= f.text_field :lng %>
-  </div>
-
-  <div class="field">
 	<%= f.label :photo, "Select a photo to upload:" %><br />
 	<%= f.file_field(:photo) %>
   </div>
-  <div id="map" style="width: 300px; height: 300px">
-	  <!-- the map is here -->
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
+<div class="hidden">
+    <%= f.label :lat %><br />
+    <%= f.text_field :lat %>
+    <%= f.label :lng %><br />
+    <%= f.text_field :lng %>	
+</div>
+</div>		
 <% end %>
+
+<p>The spot's location:</p>
+<p>Please click the map and drag the marker to edit the spot's location</p>
+
+<div id="form_map" style="width: 300px; height: 300px">
+	  <!-- the map is here -->
+</div>
