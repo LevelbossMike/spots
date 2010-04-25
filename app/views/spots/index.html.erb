@@ -1,5 +1,6 @@
 <!-->Javascript</!-->
 <%= javascript_include_tag 'overview_map' %>
+<%= javascript_include_tag 'pagination' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spots=<%= raw @spots.to_json%>;
