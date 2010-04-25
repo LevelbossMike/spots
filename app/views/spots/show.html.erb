@@ -6,26 +6,20 @@
 	var spot=<%= raw @spot.to_json%>;
 </script>
 <div id="spotInfo">
-	  <h2><%= @spot.name %></h2>
-		<%= image_tag @spot.photo.url(:medium) %>
-	<p>
-	  <%= @spot.description %>
-	</p>
+	 <h2><%= @spot.name %></h2>
+	<%= image_tag @spot.photo.url(:medium) %>
+	<p><%= @spot.description %></p>
 	<h2>Comments</h2>
 	<% if @spot.comments.length > 0 %>
 		<%= render :partial => "comments/comment", :collection => @spot.comments %>
 	<% else %>
-		There are currently no comments for this spot. Feel free to add one.
+	There are currently no comments for this spot. Feel free to add one.
 	<% end %>
 	<div id="commentButton">
 		<button>Add a Comment</button>
 	</div>
 	<div id="commentForm">
-			<%= render "comments/form" %>	
-			<div id="closeButton">
-				<button>Close Form</button>
-			    
-			</div>
+		<%= render "comments/form" %>	
 	</div>
 </div>
 <h2>This is the spot on a map:</h2><br />

@@ -13,8 +13,7 @@
 </div>
 <br />
 <div id="spots">
-	<h2>Spots</h2>
-	<%= render :partial => "spot", :collection => @spots %>
+	<%= render @spots %>
 </div>
 <div id="pagination">
 	<%= will_paginate @spots %>

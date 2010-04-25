@@ -1,4 +1,3 @@
 $(document).ready(function() {
-	//alert("dom is loaded")
+	$('.pagination a').attr('data-remote', 'true');
 });
-
