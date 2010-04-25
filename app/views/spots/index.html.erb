@@ -7,8 +7,10 @@
 </script>
 <!-->End of Javascript</!-->
 <h1>Listing spots</h1>
-<div id="map" style="width: 600px; height: 500px"></div>
-<%= button_to 'Add a Spot', new_spot_path, :method => :get %>
+<div id="map" style="width: 600px; height: 350px"></div>
+<div id="AddButton">
+<%= button_to 'Add a Spot', new_spot_path, :method => :get %>	
+</div>
 <br />
 <div id="spots">
 	<h2>Spots</h2>

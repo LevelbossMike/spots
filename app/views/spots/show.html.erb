@@ -1,21 +1,15 @@
 <div id="formular">
 <%= javascript_include_tag 'detail_map' %>
+<%= javascript_include_tag 'spoiler' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
 </script>
 <div id="spotInfo">
-	<p>
-	  <b>Name:</b>
-	  <%= @spot.name %>
-	</p>
-	<p>
-	  <b>Description:</b>
-	  <%= @spot.description %>
-	</p>
-	<p>
-		<b>This is a picture of the spot:</b><br />
+	  <h2><%= @spot.name %></h2>
 		<%= image_tag @spot.photo.url(:medium) %>
+	<p>
+	  <%= @spot.description %>
 	</p>
 	<h2>Comments</h2>
 	<% if @spot.comments.length > 0 %>
@@ -23,12 +17,18 @@
 	<% else %>
 		There are currently no comments for this spot. Feel free to add one.
 	<% end %>
-	<h2>Add a comment:</h2>
-		<%= render "comments/form" %>
-	<br />
+	<div id="commentButton">
+		<button>Add a Comment</button>
+	</div>
+	<div id="commentForm">
+			<%= render "comments/form" %>	
+			<div id="closeButton">
+				<button>Close Form</button>
+			    
+			</div>
+	</div>
 </div>
-
-<b>This is the spot on a map:</b><br />
+<h2>This is the spot on a map:</h2><br />
 <div id="detail_map" style="width: 300px; height: 300px">
 	<!-- the map is here -->
 </div>
