@@ -4,15 +4,17 @@
 var centerLat = 48.3084;
 var centerLng = 14.2785;
 var zoomVal = 16;
+var markers =[];
 
 // just for routing
 var ListenerCounter = 0;
 var dragMarker;
 var directions;
+var map;
 
 function init(){	
 	var cloudmade = new CM.Tiles.CloudMade.Web({key: '8ad01bc75dc44e1e892962e5a81481f3'});
-    var map = new CM.Map('map', cloudmade);
+    map = new CM.Map('map', cloudmade);
 	<!-- this sets center of map to coordinates of Linz -->
 	centerCoords = new CM.LatLng(centerLat, centerLng);
     map.setCenter(centerCoords, zoomVal);
@@ -21,15 +23,7 @@ function init(){
 	map.addControl(new CM.LargeMapControl());
 	//add marker
 	//addMarker(centerLat,centerLng,"Weberschule","This is Weberschule",map)
-	if (spots.length > 0) {
-		for (var i=0; i < spots.length; i++) {
-			addMarker(spots[i].lat, spots[i].lng, spots[i].name, spots[i].description, spots[i].id, spots[i].photo_file_name, map);
-		};
-	} else{
-		addMarker(spots.lat, spots.lng, spots.name, spots.description, map);
-		centerCoords = new CM.LatLng(spots.lat, spots.lng);
-		map.setCenter(centerCoords, zoomVal);
-	};
+	reloadMarkers(spots,map);
 	enableRouting(map);
 }
 
@@ -44,6 +38,7 @@ function addMarker(lat,lng,name,description,id,file_name,map) {
 		marker.openInfoWindow("<img height='60%' width='60%' src='"+img_src+"'><br />" + description)
 		map.setCenter(markerLatLng, zoomVal);
 	});
+	markers.push(marker);
 	map.addOverlay(marker);
 }
 
@@ -83,6 +78,28 @@ function enableRouting(map){
 	});
 }
 
+function reloadMarkers(spots,map){
+	for (var i=0; i < markers.length; i++) {
+		map.removeOverlay(markers[i]);
+	};
+	if (spots.length > 0) {
+		for (var i=0; i < spots.length; i++) {
+			addMarker(spots[i].lat, spots[i].lng, spots[i].name, spots[i].description, spots[i].id, spots[i].photo_file_name, map);
+		};
+	} else{
+		//when only one marker should be displayed #show,edit, etc.
+		addMarker(spots.lat, spots.lng, spots.name, spots.description, map);
+		centerCoords = new CM.LatLng(spots.lat, spots.lng);
+		map.setCenter(centerCoords, zoomVal);
+	};
+}
 
-window.onload = init;
+$(document).ready(function() {
+	init();
+/*$('#pagination a').click(function(){
+		reloadMarkers(spots,map);
+	});*/
+});
+
+//window.onload = init;
 

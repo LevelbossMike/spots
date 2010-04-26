@@ -7,7 +7,7 @@
 </script>
 <!-->End of Javascript</!-->
 <h1>Listing spots</h1>
-<div id="map" style="width: 600px; height: 350px"></div>
+<div id="map" style="width: 800px; height: 350px"></div>
 <div id="AddButton">
 <%= button_to 'Add a Spot', new_spot_path, :method => :get %>	
 </div>
@@ -17,6 +17,10 @@
 </div>
 <div id="pagination">
 	<%= will_paginate @spots %>
+</div>
+
+<div id="test">
+	
 </div>
 
 

@@ -1,3 +1,5 @@
 $('#spots').html("<%= escape_javascript(render(@spots)) %>");
 $('#pagination').html("<%= escape_javascript(will_paginate(@spots)) %>")
 $('.pagination a').attr('data-remote', 'true');
+var spots = <%= raw @spots.to_json %>;
+reloadMarkers(spots,map);
