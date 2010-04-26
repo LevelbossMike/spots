@@ -2,7 +2,10 @@ class CommentsController < ApplicationController
   def create
     @spot = Spot.find(params[:spot_id])
     @comment = @spot.comments.create(params[:comment])
-    redirect_to spot_path(@spot)
+    respond_to do |format|
+      format.html {redirect_to spot_path(@spot)}
+      format.js
+    end
   end
   def destroy
     @spot = Spot.find(params[:spot_id])

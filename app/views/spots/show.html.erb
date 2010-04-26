@@ -10,11 +10,13 @@
 	<%= image_tag @spot.photo.url(:medium) %>
 	<p><%= @spot.description %></p>
 	<h2>Comments</h2>
+<div id="comments">
 	<% if @spot.comments.length > 0 %>
-		<%= render :partial => "comments/comment", :collection => @spot.comments %>
+		<%= render @spot.comments %>
 	<% else %>
 	There are currently no comments for this spot. Feel free to add one.
 	<% end %>
+</div>
 	<div id="commentButton">
 		<button>Add a Comment</button>
 	</div>
