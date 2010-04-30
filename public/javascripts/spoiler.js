@@ -3,10 +3,10 @@ $(document).ready(function(){
   	$("#commentButton").toggle(function(){
     	$("#commentForm").show('slow');
 		$("#commentButton").html(
-			'<button>Cancel</button>');
+			'<button>Abbrechen</button>');
   	},function(){
 		$('#commentButton').html(
-			'<button>Add a comment</button>')
+			'<button>Kommentieren</button>')
     	$("#commentForm").hide('fast');
   	 });
 });

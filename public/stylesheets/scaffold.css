@@ -129,6 +129,7 @@ html {
 	overflow: hidden;
 }
 .hidden {
+	display: none;
 }
 #detail_map{
 	margin:2em;

@@ -6,10 +6,10 @@
 	var spots=<%= raw @spots.to_json%>;
 </script>
 <!-->End of Javascript</!-->
-<h1>Listing spots</h1>
+<h1>Gefahrenstellen</h1>
 <div id="map" style="width: 800px; height: 350px"></div>
 <div id="AddButton">
-<%= button_to 'Add a Spot', new_spot_path, :method => :get %>	
+<%= button_to 'Gefahrenstelle eintragen', new_spot_path, :method => :get %>	
 </div>
 <br />
 <div id="spots">

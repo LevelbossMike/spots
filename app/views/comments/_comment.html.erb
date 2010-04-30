@@ -1,17 +1,17 @@
 <div id="comment_<%= comment.id %>" class="comment">
 	<p>
-	  <b>Commenter:</b>
+	  <b>Author:</b>
 	  <%= comment.commenter %>
 	</p>
 
 	<p>
-	  <b>Comment:</b>
+	  <b>Kommentar:</b>
 	  <%= comment.body %>
 	</p>
 
 	<p>
-		<%= link_to 'Destroy Comment', [comment.spot, comment],
-		 								:confirm => 'Are you sure',
+		<%= link_to 'Kommentar entfernen', [comment.spot, comment],
+		 								:confirm => 'Sind sie sicher?',
 										:method => :delete	%>
 	</p>
 </div>

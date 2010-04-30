@@ -15,11 +15,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :beschreibung %><br />
     <%= f.text_area :description %>
   </div>
   <div class="field">
-	<%= f.label :photo, "Select a photo to upload:" %><br />
+	<%= f.label :photo, "Foto zur Gefahrenstelle:" %><br />
 	<%= f.file_field(:photo) %>
   </div>
   <div class="actions">
@@ -34,8 +34,8 @@
 </div>		
 <% end %>
 
-<p>The spot's location:</p>
-<p>Please click the map and drag the marker to edit the spot's location</p>
+<p>Die Gefahrenstelle auf der Karte:</p>
+<p>Bitte auf die Karte klicken und den Marker verschieben um die Position festzulegen.</p>
 
 <div id="form_map" style="width: 300px; height: 300px">
 	  <!-- the map is here -->

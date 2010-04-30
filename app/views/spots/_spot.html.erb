@@ -8,8 +8,8 @@
 		<p><%= spot.description  %></p>
 	</div>
 	<div id='menu'>
-		<%= link_to 'Edit', edit_spot_path(spot) %> |
-		<%= link_to 'Destroy', spot, :confirm => 'Are you sure?', :method => :delete %>	
+		<%= link_to 'Editieren', edit_spot_path(spot) %> |
+		<%= link_to 'Gefahrenstelle entfernen', spot, :confirm => 'Sind sie sicher?', :method => :delete %>	
 	</div>
 </div>	
 </li>
