@@ -24,6 +24,10 @@
 		<%= render "comments/form" %>	
 	</div>
 </div>
+<%=@spot.photos.length %>
+<% for photo in @spot.photos %>
+  <%= image_tag photo.data.url(:small)%>
+<% end %>
 <h2>Die Gefahrenstelle auf einer Karte:</h2><br />
 <div id="detail_map" style="width: 300px; height: 300px">
 	<!-- the map is here -->

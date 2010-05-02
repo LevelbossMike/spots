@@ -1,6 +1,6 @@
 Spots::Application.routes.draw do |map|
   resources :spots do
-    resources :comments
+    resources :comments,:photos
   end
   
   

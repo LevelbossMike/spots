@@ -22,6 +22,16 @@
 	<%= f.label :photo, "Foto zur Gefahrenstelle:" %><br />
 	<%= f.file_field(:photo) %>
   </div>
+	<!-- multiple image upload -->
+	<% f.fields_for :photos do |builder| %>
+	<% if builder.object.new_record? %>
+		<p>
+			<%= builder.label :data, "Image File" %>
+			<%= builder.file_field :data %>
+		</p>
+	<% end %>
+	<% end %>
+	
   <div class="actions">
     <%= f.submit %>
   </div>
