@@ -1,9 +1,16 @@
 
+
+// when document is ready load map
+$(document).ready(function() {
+	init();
+});
+
 <!-- variables -->
 <!-- map, center is weberschule -->
 var centerLat = 48.3084;
 var centerLng = 14.2785;
 var zoomVal = 16;
+// array of markers to make it possible to change the map-markers dynamically
 var markers =[];
 
 // just for routing
@@ -79,9 +86,12 @@ function enableRouting(map){
 }
 
 function reloadMarkers(spots,map){
+	// loops through all markers in markers and removes them from the map
 	for (var i=0; i < markers.length; i++) {
 		map.removeOverlay(markers[i]);
 	};
+	// reinitialize the markers array to free space in array‚
+	markers = [];
 	if (spots.length > 0) {
 		for (var i=0; i < spots.length; i++) {
 			addMarker(spots[i].lat, spots[i].lng, spots[i].name, spots[i].description, spots[i].id, spots[i].photo_file_name, map);
@@ -93,13 +103,4 @@ function reloadMarkers(spots,map){
 		map.setCenter(centerCoords, zoomVal);
 	};
 }
-
-$(document).ready(function() {
-	init();
-/*$('#pagination a').click(function(){
-		reloadMarkers(spots,map);
-	});*/
-});
-
-//window.onload = init;
 
