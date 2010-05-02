@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100502134305) do
+ActiveRecord::Schema.define(:version => 20100502141640) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -32,12 +32,8 @@ ActiveRecord::Schema.define(:version => 20100502134305) do
   create_table "spots", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "lat",                :precision => 15, :scale => 10
-    t.decimal  "lng",                :precision => 15, :scale => 10
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.decimal  "lat",         :precision => 15, :scale => 10
+    t.decimal  "lng",         :precision => 15, :scale => 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end

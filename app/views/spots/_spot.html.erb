@@ -1,7 +1,7 @@
 <li>
 <div id="spot_<%= spot.id %>" class="spot">	
 	<div id="photo">
-		<%= image_tag spot.photo.url(:small) %>
+		<%= image_tag spot.photos.first.data.url(:small) %>
 	</div>
 	<p><%= link_to (spot.name), spot %></p>
 	<div id="description">

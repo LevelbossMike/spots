@@ -7,7 +7,7 @@
 </script>
 <div id="spotInfo">
 	 <h2><%= @spot.name %></h2>
-	<%= image_tag @spot.photo.url(:medium) %>
+	<%= image_tag @spot.photos.first.data.url(:small) %>
 	<p><%= @spot.description %></p>
 	<h2>Kommentare</h2>
 <div id="comments">
@@ -24,10 +24,12 @@
 		<%= render "comments/form" %>	
 	</div>
 </div>
-<%=@spot.photos.length %>
-<% for photo in @spot.photos %>
-  <%= image_tag photo.data.url(:small)%>
-<% end %>
+<div id="photos">
+	<%=@spot.photos.length %>
+	<% for photo in @spot.photos %>
+	  <%= image_tag photo.data.url(:small)%>
+	<% end %>
+</div>
 <h2>Die Gefahrenstelle auf einer Karte:</h2><br />
 <div id="detail_map" style="width: 300px; height: 300px">
 	<!-- the map is here -->

@@ -18,10 +18,6 @@
     <%= f.label :beschreibung %><br />
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-	<%= f.label :photo, "Foto zur Gefahrenstelle:" %><br />
-	<%= f.file_field(:photo) %>
-  </div>
 	<!-- multiple image upload -->
 	<% f.fields_for :photos do |builder| %>
 	<% if builder.object.new_record? %>
