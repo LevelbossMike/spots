@@ -142,7 +142,11 @@ html {
 	margin:2em;
 }
 #photos {
-	display: none;
+	
+}
+#photos li {
+	display: inline;
+	margin-right: 5px;
 }
 
 
