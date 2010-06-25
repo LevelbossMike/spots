@@ -7,7 +7,7 @@ class SpotsController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @spots }
+      format.xml  { render :xml => @spots  }
       format.js
     end
   end
@@ -18,7 +18,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @spot }
+      format.xml  { render :xml => @spot}
     end
   end
 

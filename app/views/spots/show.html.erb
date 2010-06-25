@@ -5,6 +5,7 @@
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
 </script>
+<%= raw @spot.photos.to_json %>
 <div id="spotInfo">
 	 <h2><%= @spot.name %></h2>
 	<%= image_tag @spot.photos.first.data.url(:small) %>

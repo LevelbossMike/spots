@@ -19,6 +19,10 @@ var dragMarker;
 var directions;
 var map;
 
+// for getting destination of a spot's photo on the server
+var photos_destination_on_server = "/system/datas/"
+
+
 function init(){	
 	var cloudmade = new CM.Tiles.CloudMade.Web({key: '8ad01bc75dc44e1e892962e5a81481f3'});
     map = new CM.Map('map', cloudmade);
@@ -34,8 +38,8 @@ function init(){
 	enableRouting(map);
 }
 
-function addMarker(lat,lng,name,description,id,file_name,map) {	
-	var img_src = "/system/photos/"+ id + "/small/" + file_name;	
+function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {	
+	var img_src = photos_destination_on_server + photo_id + "/small/" + photo_file_name;	
 	var markerLatLng = new CM.LatLng(lat,lng);
 	var marker = new CM.Marker(markerLatLng, {
 		title: name
@@ -94,7 +98,10 @@ function reloadMarkers(spots,map){
 	markers = [];
 	if (spots.length > 0) {
 		for (var i=0; i < spots.length; i++) {
-			addMarker(spots[i].lat, spots[i].lng, spots[i].name, spots[i].description, spots[i].id, spots[i].photo_file_name, map);
+			//addMarker(lat,lng,name,description,photo_id,photo_file_name,map)
+			addMarker(spots[i].lat, spots[i].lng, spots[i].name,
+				 	  spots[i].description, spots[i].photos[0].id,
+				 	  spots[i].photos[0].data_file_name, map);
 		};
 	} else{
 		//when only one marker should be displayed #show,edit, etc.

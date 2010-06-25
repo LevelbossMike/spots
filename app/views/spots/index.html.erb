@@ -3,7 +3,7 @@
 <%= javascript_include_tag 'pagination' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
-	var spots=<%= raw @spots.to_json%>;
+	var spots=<%= raw @spots.to_json(:include => :photos)%>;
 </script>
 <!-->End of Javascript</!-->
 <h1>Gefahrenstellen</h1>
