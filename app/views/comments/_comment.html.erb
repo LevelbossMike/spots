@@ -1,12 +1,16 @@
 <div id="comment_<%= comment.id %>" class="comment">
 	<p>
 	  <b>Author:</b>
+	<p></p>
 	  <%= comment.commenter %>
 	</p>
-
 	<p>
 	  <b>Kommentar:</b>
 	  <%= comment.body %>
+	</p>
+	<p>
+		<b>zuletzt geändert am:</b>
+		<%= comment.updated_at.to_formatted_s(:short) %>
 	</p>
 
 	<p>

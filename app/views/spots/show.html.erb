@@ -34,5 +34,9 @@
 	<%=render :partial => @spot.photos  %>
 </div>
 </div>
+<p>
+	<b>zuletzt geändert am:</b>
+	<%= @spot.updated_at.to_formatted_s(:short) %>
+</p>
 <%= link_to 'Editieren', edit_spot_path(@spot) %> |
 <%= link_to 'Zur vorherigen Seite', spots_path %>
