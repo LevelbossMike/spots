@@ -18,7 +18,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @spot}
+      format.xml  { render :xml => @spot.to_xml(:include => :comments)}
     end
   end
 

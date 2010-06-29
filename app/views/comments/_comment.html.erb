@@ -16,6 +16,7 @@
 	<p>
 		<%= link_to 'Kommentar entfernen', [comment.spot, comment],
 		 								:confirm => 'Sind sie sicher?',
-										:method => :delete	%>
+										:method => :delete	%> |
+		<%= link_to 'Kommentar bearbeiten', edit_spot_comment_path(comment.spot, comment)%>
 	</p>
 </div>
