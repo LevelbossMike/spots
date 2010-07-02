@@ -26,7 +26,6 @@ class SpotsController < ApplicationController
   # GET /spots/new.xml
   def new
     @spot = Spot.new
-    3.times {@spot.photos.build}
 
     respond_to do |format|
       format.html # new.html.erb

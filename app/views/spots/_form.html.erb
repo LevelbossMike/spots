@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'form_map' %>
+<%= javascript_include_tag 'form.js' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
@@ -19,14 +20,22 @@
     <%= f.text_area :description %>
   </div>
 	<!-- multiple image upload -->
-	<% f.fields_for :photos do |builder| %>
-	<% if builder.object.new_record? %>
-		<p>
-			<%= builder.label :data, "Image File" %>
-			<%= builder.file_field :data %>
-		</p>
+	<% f.fields_for :photos do |p| %>
+			<% if p.object.new_record? %>
+			<p>
+				<%= p.label :data, "Image File" %>
+				<%= p.file_field :data %>
+			</p>
+		<% end %>
 	<% end %>
-	<% end %>
+	<div id="photos">
+     <% if @spot.new_record? %>
+       <%= render :partial => 'photo', :locals => { :form => f, :photo => @spot.photos.build } %>
+    <% end %>
+  </div>
+	<!-- implementation taken from http://www.webyfi.com/?p=222 -->
+	<%= add_object_link("New Photo", f, @spot.photos.build, "photo", "#photos") %>
+	
 	
   <div class="actions">
     <%= f.submit %>
