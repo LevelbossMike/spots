@@ -9,8 +9,6 @@
   <%= f.error_messages %>
 
 <div id="fields">
-	
-
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -24,6 +22,11 @@
 	<div id="photos">
      <% if @spot.new_record? %>
        <%= render :partial => 'photo', :locals => { :form => f, :photo => @spot.photos.build } %>
+		<% else  %>
+			<% if @spot.photos.length > 0 %>
+			<p>Standardfoto festlegen</p>
+			<%= f.collection_select :selected_photo_id, @spot.photos.order("title ASC"), :id, :title %>
+			<% end %>
     <% end %>
   </div>
 	<%= add_object_link("Noch ein Foto hinzufügen", f, @spot.photos.build, "photo", "#photos") %>

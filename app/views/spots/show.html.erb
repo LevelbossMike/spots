@@ -9,7 +9,11 @@
 <div id="spotInfo">
 	 <h2><%= @spot.name %></h2>
 	<% if @spot.photos.length > 0%>
-	<%= image_tag @spot.photos.first.data.url(:small) %>
+		<% if @spot.selected_photo_id?%>
+		<%= image_tag @spot.photos.find_by_id(@spot.selected_photo_id).data.url(:small) %>
+		<% else %>
+		<%= image_tag @spot.photos.first.data.url(:small) %>
+		<% end %>
 	<% else  %>
 	There is no Photo for this spot, yet. Feel free to add one.
 	<% end %>
