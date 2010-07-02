@@ -8,7 +8,11 @@
 <%= raw @spot.photos.to_json %>
 <div id="spotInfo">
 	 <h2><%= @spot.name %></h2>
+	<% if @spot.photos.length > 0%>
 	<%= image_tag @spot.photos.first.data.url(:small) %>
+	<% else  %>
+	There is no Photo for this spot, yet. Feel free to add one.
+	<% end %>
 	<p><%= @spot.description %></p>
 	<h2>Kommentare</h2>
 	<div id="comments">
@@ -29,7 +33,7 @@
 <div id="detail_map" style="width: 300px; height: 300px">
 	<!-- the map is here -->
 </div>
-<h2>Photos for this spot</h2>
+<h2>Fotos für diese Gefahrenstelle</h2>
 <div id="photos">
 	<%=render :partial => @spot.photos  %>
 </div>

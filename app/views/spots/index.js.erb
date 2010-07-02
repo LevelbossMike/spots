@@ -3,6 +3,6 @@ $('#spots').html("<%= escape_javascript(render(@spots)) %>");
 $('#pagination').html("<%= escape_javascript(will_paginate(@spots)) %>")
 $('.pagination a').attr('data-remote', 'true');
 // makes the new spots accessible to overview_map.js
-var spots = <%= raw @spots.to_json %>;
+var spots = <%= raw @spots.to_json(:include => :photos) %>;
 // reload markers can be found in overview_map.js
 reloadMarkers(spots,map);

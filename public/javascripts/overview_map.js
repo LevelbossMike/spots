@@ -52,6 +52,19 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
 	markers.push(marker);
 	map.addOverlay(marker);
 }
+function addMarkerDescriptionOnly(lat,lng,name,description,map) {		
+	var markerLatLng = new CM.LatLng(lat,lng);
+	var marker = new CM.Marker(markerLatLng, {
+		title: name
+	});
+	<!-- add an EventListener to the marker, to make it respond when clicked -->
+	CM.Event.addListener(marker, 'click', function() {
+		marker.openInfoWindow(description)
+		map.setCenter(markerLatLng, zoomVal);
+	});
+	markers.push(marker);
+	map.addOverlay(marker);
+}
 
 function enableRouting(map){
 	CM.Event.addListener(map, 'click', function(latlng){
@@ -98,10 +111,18 @@ function reloadMarkers(spots,map){
 	markers = [];
 	if (spots.length > 0) {
 		for (var i=0; i < spots.length; i++) {
-			//addMarker(lat,lng,name,description,photo_id,photo_file_name,map)
-			addMarker(spots[i].lat, spots[i].lng, spots[i].name,
-				 	  spots[i].description, spots[i].photos[0].id,
-				 	  spots[i].photos[0].data_file_name, map);
+			var spot = spots[i];
+			// no photo can be displayed, when there's no photo for a spot thus
+			// addMarkerDescriptionOnly(lat,lng,name,description,map)
+			if (spot.photos.length == 0){
+				addMarkerDescriptionOnly(spot.lat,spot.lng,spot.name,spot.description,map);
+			}
+			else {
+				// addMarker(lat,lng,name,description,photo_id,photo_file_name,map)
+				addMarker(spot.lat, spot.lng, spot.name,
+					 	  spot.description, spot.photos[0].id,
+					 	  spot.photos[0].data_file_name, map);
+			}
 		};
 	} else{
 		//when only one marker should be displayed #show,edit, etc.

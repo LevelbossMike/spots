@@ -1,3 +1,7 @@
 <li>
+	<%= photo.title %>
 	<%= image_tag photo.data.url(:small) %>
+	<%= link_to 'Photo entfernen', [photo.spot, photo],
+	 								:confirm => 'Sind sie sicher?',
+									:method => :delete	%>
 </li>

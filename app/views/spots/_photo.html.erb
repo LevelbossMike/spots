@@ -1,6 +1,10 @@
 <div class="photo">
   <p>
   <% form.fields_for :photos, photo  do |photo_form| %>    
+		<p>
+			<p><%= photo_form.label :Fototitel %></p>
+			<%= photo_form.text_field :title %>
+		</p>
     <%= photo_form.file_field :data %>
 		<%= link_to_function "delete", "remove_field($(this), ('.photo'))" %><br/>
   <% end %>
