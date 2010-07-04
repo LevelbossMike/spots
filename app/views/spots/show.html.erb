@@ -18,9 +18,14 @@
 	There is no Photo for this spot, yet. Feel free to add one.
 	<% end %>
 	<p><%= @spot.description %></p>
+	<% if @spot.comments.length != 0 %>
+		Die derzeitige Bewertung der Gefahrenstelle: <%= @spot.calc_rating %>
+	<% else %>
+		Es gibt noch keine Bewertung zu dieser Gefahrenstelle.
+	<% end %>
 	<h2>Kommentare</h2>
 	<div id="comments">
-		<% if @spot.comments.length > 0 %>
+		<% if @spot.comments.length != 0 %>
 			<%= render @spot.comments %>
 		<% else %>
 		Es gibt derzeit noch keine Kommentare zu dieser Gefahrenstelle. 

@@ -9,5 +9,14 @@ class Spot < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   # nested attributes
   accepts_nested_attributes_for :photos
+  
+  def calc_rating
+    @ratings = []
+    comments.each do |c|
+      @ratings << c.rating
+    end
+    #fixnums must be divided via fdiv otherwise an integer value would be returned
+    @ratings.sum.fdiv(@ratings.size)
+  end
     
 end
