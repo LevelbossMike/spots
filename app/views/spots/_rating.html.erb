@@ -1,0 +1,6 @@
+<h2>Bewertung</h2>
+<% if spot.comments.length != 0 %>
+	Die derzeitige Bewertung der Gefahrenstelle: <%= spot.calc_rating %>
+<% else %>
+	Es gibt noch keine Bewertung zu dieser Gefahrenstelle.
+<% end %>

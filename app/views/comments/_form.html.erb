@@ -14,6 +14,7 @@
     <%= f.label :rating %><br />
     <%= f.number_field :rating, :in => 1..5%>
   </div>
+	<%= select ("comment", :rating, [1,2,3,4,5]) %>
   <div class="actions">
     <%= f.submit %>
   </div>

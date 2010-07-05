@@ -18,11 +18,9 @@
 	There is no Photo for this spot, yet. Feel free to add one.
 	<% end %>
 	<p><%= @spot.description %></p>
-	<% if @spot.comments.length != 0 %>
-		Die derzeitige Bewertung der Gefahrenstelle: <%= @spot.calc_rating %>
-	<% else %>
-		Es gibt noch keine Bewertung zu dieser Gefahrenstelle.
-	<% end %>
+	<div id="rating">
+	<%= render :partial => 'spots/rating', :locals => {:spot => @spot} %>
+	</div>
 	<h2>Kommentare</h2>
 	<div id="comments">
 		<% if @spot.comments.length != 0 %>
