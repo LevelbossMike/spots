@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	$("#stars-rating").stars({
+	    inputType: "select"
+	});
 	$('#commentForm').hide();
   	$("#commentButton").toggle(function(){
     	$("#commentForm").show('slow');

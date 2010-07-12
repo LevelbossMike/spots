@@ -1,7 +1,11 @@
-
 <%= form_for([@spot, @spot.comments.build], :remote => true) do |f| %>
   <%= f.error_messages %>
-
+	<div id="field">
+		<%= f.label :Bewertung %><br />
+		<div id="stars-rating" style="margin-bottom:20px">
+			<%= f.select (:rating, [1,2,3,4,5]) %>
+		</div>
+	</div>
   <div class="field">
     <%= f.label :author %><br />
     <%= f.text_field :commenter %>
@@ -10,12 +14,7 @@
     <%= f.label :kommentar %><br />
     <%= f.text_area :body %>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating, :in => 1..5%>
-  </div>
-	<%= select ("comment", :rating, [1,2,3,4,5]) %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :Abschicken %>
   </div>
 <% end %>

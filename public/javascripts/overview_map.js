@@ -46,7 +46,7 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
 	});
 	<!-- add an EventListener to the marker, to make it respond when clicked -->
 	CM.Event.addListener(marker, 'click', function() {
-		marker.openInfoWindow("<img height='60%' width='60%' src='"+img_src+"'><br />" + description)
+		marker.openInfoWindow("<img height='100%' width='100%' src='"+img_src+"'><br />" + description)
 		map.setCenter(markerLatLng, zoomVal);
 	});
 	markers.push(marker);
