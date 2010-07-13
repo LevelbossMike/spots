@@ -1,5 +1,10 @@
 $('#comments').html("<%= escape_javascript(render(@spot.comments)) %>");
 $('#rating').html("<%= escape_javascript(render :partial => 'spots/rating', :locals => {:spot => @spot}) %> ");
+$("#avg").stars({
+	inputType: "select",
+	disabled: true
+});
+$("#avg").stars("select", Math.round(rating));
 $('#commentForm').html("<%= escape_javascript(render('comments/form')) %>");
 $('#commentForm').hide('slow');
 $('#commentButton').html('<button>Kommentieren</button>');
