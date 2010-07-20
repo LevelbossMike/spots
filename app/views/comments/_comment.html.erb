@@ -1,7 +1,6 @@
-<div id="comment_<%= comment.id %>" class="comment">
+<div id="comment" class="comment">
 	<p>
 	  <b>Author:</b>
-	<p></p>
 	  <%= comment.commenter %>
 	</p>
 	<p>
@@ -12,7 +11,14 @@
 		<b>zuletzt geändert am:</b>
 		<%= comment.updated_at.to_formatted_s(:short) %>
 	</p>
-
+	<div id="comment_rating">
+ 		<p>
+ 			<b>Bewertung:</b>
+ 			<div id = "rating_display" class="rating_display" data-rating="<%= comment.rating %>">
+ 				<%= select("rating","",[1,2,3,4,5],{ :include_blank => false }) %>
+ 			</div>
+ 		</p>
+	</div>
 	<p>
 		<%= link_to 'Kommentar entfernen', [comment.spot, comment],
 		 								:confirm => 'Sind sie sicher?',

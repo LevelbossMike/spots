@@ -1,17 +1,9 @@
 <div id="formular">
-<%= javascript_include_tag 'detail_map', 'spoiler', 'jquery.raty' %>
+<%= javascript_include_tag 'detail_map', 'spoiler', 'jquery.raty','rating' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
 </script>
-<script type="text/javascript">
-	$('div#star').raty({
-		path: '/public/images/raty/'
-	});
-</script>
-<div id="star">
-	
-</div>
 <div id="spotInfo">
 	 <h2><%= @spot.name %></h2>
 	<% if @spot.photos.length > 0%>
