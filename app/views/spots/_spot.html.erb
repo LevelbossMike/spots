@@ -1,6 +1,10 @@
+<% if (spot.id.modulo(4)==1) %>
+<li class="last">	
+<%else %>
 <li>
-<div id="spot_<%= spot.id %>" class="spot">	
-	<div id="photo">
+<%end %>
+	<div id="spot_<%= spot.id %>"> 
+	<div class="photo">
 		<% if spot.photos.length > 0%>
 			<% if spot.selected_photo_id %>
 				<%= image_tag spot.photos.find_by_id(spot.selected_photo_id).data.url(:small) %>

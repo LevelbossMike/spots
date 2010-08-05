@@ -7,6 +7,8 @@ gem 'rails', '3.0.0.beta4'
 
 gem 'mysql'
 #gem "ruby-debug"
+gem "compass", ">= 0.10.3"
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

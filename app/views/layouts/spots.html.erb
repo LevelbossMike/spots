@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Spots: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'screen' %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "jquery.rails.js"%>   
 	<!-- Star Rating -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
@@ -16,8 +16,9 @@
 		Weberschule Gefahrenstellen
 	</div>
 	<%= yield %>
-<br />
-	<%= render :partial => 'layouts/footer' %>
-</div><!--end container-->
+	<div id="footer">
+		<%= render :partial => 'layouts/footer' %>		
+	</div>
+</div>
 </body>
 </html>

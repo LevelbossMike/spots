@@ -5,17 +5,20 @@
 	var spots=<%= raw @spots.to_json(:include => :photos)%>;
 </script>
 <!-->End of Javascript</!-->
-<h1>Gefahrenstellen</h1>d
-<div id="map" style="width: 800px; height: 350px"></div>
-<div id="AddButton">
-<%= button_to 'Gefahrenstelle eintragen', new_spot_path, :method => :get %>	
-</div>
-<br />
-<div id="spots">
-	<%= render @spots %>
-</div>
-<div id="pagination">
-	<%= will_paginate @spots %>
-</div>
+<h1>Gefahrenstellen</h1>
+<section id="map_section">
+	<div id="map"></div>
+	<div id="add_button">
+	<%= button_to 'Gefahrenstelle eintragen', new_spot_path, :method => :get %>	
+	</div>	
+</section>
+<section id="spots_section">
+	<ul id="spots_list">
+		<%= render @spots %>
+	</ul>
+		<div id="pagination">
+			<%= will_paginate @spots %>
+		</div>
+</section>
 
 

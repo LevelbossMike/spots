@@ -1,0 +1,67 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+@import "blueprint/scaffolding";
+@import "compass/utilities";
+@import "compass/css3";
+@import "blueprint/buttons";
+
+@include blueprint-typography;
+@include blueprint-debug;
+@include blueprint-scaffolding;
+
+$small-photo-height: 200px;
+
+#container{
+	@include container;
+	//@include showgrid;
+}
+
+#header, #footer {
+	@include column(24);
+}
+
+#map_section {
+	@include column(24);
+	#map {
+		height: 300px;
+		margin-left:40px;
+		margin-right:40px;
+		@include box-shadow;
+	}
+	#add_button {
+		@include append(1);
+		padding-top: 1em;
+		@include float-right;
+	}
+}
+
+#spots_section {
+	@include column(24,true);	
+	margin-top: 3em;
+	//background: red;
+	#spots_list{
+		@include horizontal-list(0px,left);
+		li{
+			@include column(6);
+	//		background:yellow;
+			.photo{
+				// this has to be 200px otherwise layout breaks
+				// when there's no photo
+				height: $small-photo-height;
+			}
+		}	
+		.last{
+			@include last;
+		}
+	}
+	#pagination {
+		@include column(24);
+	}
+	
+}
