@@ -1,22 +1,55 @@
-<div id="formular">
-<%= javascript_include_tag 'detail_map', 'spoiler', 'jquery.raty','rating' %>
+<%= javascript_include_tag 'detail_map', 'spoiler','rating' %>
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
 </script>
-<div id="spotInfo">
-	 <h2><%= @spot.name %></h2>
-	<% if @spot.photos.length > 0%>
-		<% if @spot.selected_photo_id?%>
-		<%= image_tag @spot.photos.find_by_id(@spot.selected_photo_id).data.url(:small) %>
-		<% else %>
-		<%= image_tag @spot.photos.first.data.url(:small) %>
-		<% end %>
-	<% else  %>
-	There is no Photo for this spot, yet. Feel free to add one.
-	<% end %>
-	<p><%= @spot.description %></p>
+<div id="spot_titlebar">
+	<div id="name">
+		<h2><%= @spot.name %></h2>
+	</div>
 	<%= render :partial => 'spots/rating', :locals => {:spot => @spot} %>
+	<hr />
+</div>
+<div id="spot_section">
+	<div id="spot_visual">
+		<div id="photo_section">
+			<div id="default_photo">
+				<% if @spot.photos.length > 0%>
+					<% if @spot.selected_photo_id?%>
+					<%= image_tag @spot.photos.find_by_id(@spot.selected_photo_id).data.url(:small) %>
+					<% else %>
+					<%= image_tag @spot.photos.first.data.url(:small) %>
+					<% end %>
+				<% else  %>
+				There is no Photo for this spot, yet. Feel free to add one.
+				<% end %>
+			</div>
+			<div id="photos">
+				<%=render :partial => 'photos/photo', :collection => @spot_photos  %>
+			</div>
+			<div id="pagination">
+				<%= will_paginate @spot_photos %>				
+			</div>
+		</div>
+		<div id="map_section">
+			<div id="detail_map">
+				<!-- the map is here -->
+			</div>
+		</div>
+		<hr />
+	</div>
+	<div id="spot_description">
+		<p><%= @spot.description %></p>		
+	</div>
+	<div id="update_info">
+		<p>
+			<b>zuletzt geändert am:</b>
+			<%= @spot.updated_at.to_formatted_s(:short) %>
+		</p>
+	</div>
+	<hr />
+</div>
+<div id="comment_section">
 	<h2>Kommentare</h2>
 	<div id="comments">
 		<% if @spot.comments.length != 0 %>
@@ -25,22 +58,12 @@
 		Es gibt derzeit noch keine Kommentare zu dieser Gefahrenstelle. 
 		<% end %>
 	</div>
-	<%= render :partial => "comments_form" %>
+	<div id="comment_form">
+		<%= render :partial => "comments_form" %>	
+	</div>
 </div>
-<h2>Die Gefahrenstelle auf einer Karte:</h2><br />
-<div id="detail_map" style="width: 300px; height: 300px">
-	<!-- the map is here -->
+<hr />
+<div id="menu">
+	<%= link_to 'Editieren', edit_spot_path(@spot) %> |
+	<%= link_to 'Zur vorherigen Seite', spots_path %>	
 </div>
-<h2>Fotos für diese Gefahrenstelle</h2>
-<div id="photos">
-	<%=render :partial => @spot.photos  %>
-</div>
-</div>
-<p>
-	<b>zuletzt geändert am:</b>
-	<%= @spot.updated_at.to_formatted_s(:short) %>
-</p>
-<%= link_to 'Editieren', edit_spot_path(@spot) %> |
-<%= link_to 'Zur vorherigen Seite', spots_path %>
-
-

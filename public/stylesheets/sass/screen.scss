@@ -11,21 +11,25 @@
 @import "compass/css3";
 @import "blueprint/buttons";
 
+// star-rating css
+@import "star_rating";
+
 @include blueprint-typography;
 @include blueprint-debug;
 @include blueprint-scaffolding;
 
 $small-photo-height: 200px;
+$short_description_height: 75px; 
 
 #container{
 	@include container;
-	//@include showgrid;
+	@include showgrid;
 }
 
 #header, #footer {
 	@include column(24);
 }
-
+//spot#index
 #map_section {
 	@include column(24);
 	#map {
@@ -46,22 +50,106 @@ $small-photo-height: 200px;
 	margin-top: 3em;
 	//background: red;
 	#spots_list{
-		@include horizontal-list(0px,left);
+		@include horizontal-list-container;
 		li{
 			@include column(6);
 	//		background:yellow;
-			.photo{
-				// this has to be 200px otherwise layout breaks
-				// when there's no photo
-				height: $small-photo-height;
+			.spot{
+				display:block;
+				.photo{
+					// this has to be 200px otherwise layout breaks
+					// when there's no photo
+					height: $small-photo-height;
+				}
+				#description{
+					height:$short_description_height;
+				}
 			}
 		}	
 		.last{
 			@include last;
 		}
+		
 	}
 	#pagination {
 		@include column(24);
+		margin-top: 1em;
+		text-align: center;
 	}
 	
 }
+//spots#show
+#spot_titlebar {
+	@include column(24);
+	#name {	
+		h2{
+			margin-bottom:0em;
+		}
+	}
+	#rating {
+	}
+}
+#spot_section {
+	#spot_visual{
+		@include column(24);
+		#photo_section {
+			@include column(12);
+			#default_photo{
+				text-align:center;
+			}
+			#photos{
+				@include horizontal-list-container;
+				li{
+					@include column(3)
+				}
+				.last{
+					@include last;
+				}
+			}
+			#pagination {
+				margin-top: 1em;
+				text-align: center;
+			}
+		}
+		#map_section {
+			@include column(12,true);
+			#detail_map{
+				height: 300px;
+			}
+		}	
+	}	
+}
+#comment_section {
+
+	#comments{
+		@include column(16);
+	}
+	#comment_form{
+		@include column(8, true);
+	}
+	.menu {
+		@include column(24,true);
+	}
+}
+
+
+
+//spot#form
+#form{
+	#entry_form{
+		@include column(16);
+		#position_data {
+			visibility: hidden;
+			display:none;
+		}
+	}
+	#map{
+		@include column(8,last);
+	}	
+}
+
+.menu {
+	@include column(24);
+}
+
+

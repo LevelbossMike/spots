@@ -16,6 +16,7 @@ class SpotsController < ApplicationController
   # GET /spots/1.xml
   def show
     @spot = Spot.find(params[:id])
+    @spot_photos = @spot.photos.paginate :page => params[:page], :per_page => 4, :order => 'created_at DESC'
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @spot.to_xml(:include => :comments)}

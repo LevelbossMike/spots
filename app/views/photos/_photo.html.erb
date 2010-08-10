@@ -1,7 +1,17 @@
+<% if (photo_counter==3) %>
+<li class="last">	
+<%else %>
 <li>
-	<%= photo.title %>
-	<%= image_tag photo.data.url(:small) %>
-	<%= link_to 'Foto entfernen', [photo.spot, photo],
-	 								:confirm => 'Sind sie sicher?',
-									:method => :delete	%>
+<%end %>
+	<div id="title">
+		<%= photo.title %>		
+	</div>
+	<div id="photo">
+	<%= image_tag photo.data.url(:mini) %>		
+	</div>
+	<div id="admin">
+		<%= link_to 'Foto entfernen', [photo.spot, photo],
+		 								:confirm => 'Sind sie sicher?',
+										:method => :delete	%>
+	</div>
 </li>

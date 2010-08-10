@@ -18,5 +18,14 @@ class Spot < ActiveRecord::Base
     #fixnums must be divided via fdiv otherwise an integer value would be returned
     @ratings.sum.fdiv(@ratings.size)
   end
+  
+  def short_description
+    length = 150
+    if(description.length > length) then
+      description.slice(0..(length-6))+" (...)"
+    else
+      description
+    end
+  end
     
 end

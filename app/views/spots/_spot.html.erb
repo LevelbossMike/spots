@@ -1,9 +1,9 @@
-<% if (spot.id.modulo(4)==1) %>
+<% if (spot_counter==3) %>
 <li class="last">	
 <%else %>
 <li>
 <%end %>
-	<div id="spot_<%= spot.id %>"> 
+	<div id="spot_<%= spot.id %>" class="spot"> 
 	<div class="photo">
 		<% if spot.photos.length > 0%>
 			<% if spot.selected_photo_id %>
@@ -17,7 +17,7 @@
 	</div>
 	<p><%= link_to (spot.name), spot %></p>
 	<div id="description">
-		<p><%= spot.description  %></p>
+		<p><%= spot.short_description %></p>
 	</div>
 	<div id='menu'>
 		<%= link_to 'Editieren', edit_spot_path(spot) %> |

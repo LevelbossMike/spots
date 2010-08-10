@@ -1,5 +1,5 @@
 // renders spots
-$('#spots').html("<%= escape_javascript(render(@spots)) %>");
+$('#spots_list').html("<%= escape_javascript(render(@spots)) %>");
 $('#pagination').html("<%= escape_javascript(will_paginate(@spots)) %>")
 $('.pagination a').attr('data-remote', 'true');
 // makes the new spots accessible to overview_map.js
