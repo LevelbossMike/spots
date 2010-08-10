@@ -37,7 +37,7 @@ $(document).ready(function() {
 	new OpenLayers.Control.Navigation(),
 	new OpenLayers.Control.KeyboardDefaults(),
 	new OpenLayers.Control.PanZoomBar(),
-	new OpenLayers.Control.LayerSwitcher()
+	//new OpenLayers.Control.LayerSwitcher()
 	]
     });
 
@@ -83,21 +83,6 @@ $(document).ready(function() {
 
 
 function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
-    /*var img_src = "system/photos/"+ id + "/small/" + file_name;
-	var markerLatLng = new CM.LatLng(lat,lng);
-	var marker = new CM.Marker(markerLatLng, {
-		title: name
-	});
-	<!-- add an EventListener to the marker, to make it respond when clicked -->
-	CM.Event.addListener(marker, 'click', function() {
-		marker.openInfoWindow("<img height='60%' width='60%' src='"+img_src+"'><br />" + description)
-		map.setCenter(markerLatLng, zoom);
-	});
-	markers.push(marker);
-	map.addOverlay(marker);
-	*/
-    var img_src = photos_destination_on_server + photo_id + "/small/" + photo_file_name;
-
     var lonLatMarker = new OpenLayers.LonLat(lng, lat).transform(wgs84, mapprojection);
     var feature = new OpenLayers.Feature(osm, lonLatMarker);
     feature.closeBox = true;
@@ -105,16 +90,39 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
     feature.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
 	displayClass: 'dangerpopup'
     } );
-    feature.data.popupContentHTML = '<h1 class="dangerheadline">' + name + '</h1><img src="' + img_src + '" alt="' + name + ' /><p class="dangerdescription">' + description + '</p>';
+		var img_src = photos_destination_on_server + photo_id + "/small/" + photo_file_name;
+	    feature.data.popupContentHTML = '<h1 class="dangerheadline">' + name
+	 									+ '</h1><img src="' + img_src + '" alt="' +
+	 									name + ' /><p class="dangerdescription">' +
+	 									description + '</p>';
+	
+    var marker = new OpenLayers.Marker(lonLatMarker);
+    marker.feature = feature;
+    var markerDown = function(evt) {
+	if (this.popup == null) {
+	    this.popup = this.createPopup(this.closeBox);
+	    map.addPopup(this.popup);
+	    this.popup.show();
+	} else {
+	    this.popup.toggle();
+	}
+	OpenLayers.Event.stop(evt);
+    };
+    marker.events.register("mousedown", feature, markerDown);
+    dangers.addMarker(marker);
+}
+function addMarkerDescOnly(lat,lng,name,description,map) {
+    var lonLatMarker = new OpenLayers.LonLat(lng, lat).transform(wgs84, mapprojection);
+    var feature = new OpenLayers.Feature(osm, lonLatMarker);
+    feature.closeBox = true;
 
-    /*var icon;
-                    if (danger == 3) {
-                        icon = new OpenLayers.Icon('images/rdanger.png');
-                    } else {
-                        icon = new OpenLayers.Icon('images/ydanger.png');
-                    }
-                    icon.size = new OpenLayers.Size(20, 18);*/
-
+    feature.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
+	displayClass: 'dangerpopup'
+    } );
+	    feature.data.popupContentHTML = '<h1 class="dangerheadline">' + name
+	 									+ '</h1><p class="dangerdescription">' +
+	 									description + '</p>';
+	
     var marker = new OpenLayers.Marker(lonLatMarker);
     marker.feature = feature;
 
@@ -134,18 +142,16 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
 }
 
 function reloadMarkers(spots,map){
-    // loops through all markers in markers and removes them from the map
-    // KR: in der Form nicht nötig, Marker sind eigener Layer, der als Ganzes gelöscht werden kann
-    /*	for (var i=0; i < markers.length; i++) {
-		map.removeOverlay(markers[i]);
-	};*/
-	
-    // reinitialize the markers array to free space in array‚
-    //	markers = [];
+	dangers.clearMarkers();
     if (spots.length > 0) {
 	for (var i=0; i < spots.length; i++) {
-	    //addMarker(lat,lng,name,description,photo_id,photo_file_name,map)
-	    addMarker(spots[i].lat, spots[i].lng, spots[i].name, spots[i].description, spots[i].photos[0].id, spots[i].photos[0].data_file_name, map);
+		var spot = spots[i];
+		if(spot.photos.length == 0){
+			addMarkerDescOnly(spot.lat,spot.lng,spot.name,spot.description,map);
+		}
+		else{
+		    addMarker(spot.lat, spot.lng, spot.name, spot.description, spot.photos[0].id, spot.photos[0].data_file_name, map);
+		}
 	};
     } else{
 	//when only one marker should be displayed #show,edit, etc.

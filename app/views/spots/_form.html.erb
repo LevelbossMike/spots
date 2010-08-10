@@ -3,6 +3,16 @@
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spot=<%= raw @spot.to_json%>;
+		$(document).ready(function() {
+	  	$("#slider").slider({
+	      range: "min",
+	      min: 0,
+	      max: 100,
+	      slide: function(event, ui) {
+		map.layers[0].setOpacity(1 - ((ui.value) / 100));
+	      }
+	    });
+		});
 </script>
 
 <div id="form">
@@ -42,10 +52,12 @@
 		<% end %>
 	</div>
 	<div id="map">
-		<p>Die Gefahrenstelle auf der Karte:</p>
 		<p>Bitte auf die Karte klicken und den Marker verschieben um die Position festzulegen.</p>
 		<div id="form_map" style="width: 300px; height: 300px">
 			  <!-- the map is here -->
+		</div>
+		<div id="slider" class="slider">
+			
 		</div>
 	</div>
 </div>	

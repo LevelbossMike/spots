@@ -481,6 +481,20 @@ form.inline p {
   box-shadow: #333333 1px 1px 5px 0;
 }
 /* line 41, sass/screen.scss */
+#map_section #slider {
+  margin-top: 1em;
+  margin-left: 40px;
+  padding-left: 80px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 230px;
+}
+/* line 138, ../../../../.rvm/gems/ruby-1.8.7-head/gems/compass-0.10.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #map_section #slider {
+  overflow-x: hidden;
+}
+/* line 47, sass/screen.scss */
 #map_section #add_button {
   padding-right: 40px;
   padding-top: 1em;
@@ -488,7 +502,7 @@ form.inline p {
   float: right;
 }
 
-/* line 48, sass/screen.scss */
+/* line 54, sass/screen.scss */
 #spots_section {
   display: inline;
   float: left;
@@ -500,7 +514,7 @@ form.inline p {
 * html #spots_section {
   overflow-x: hidden;
 }
-/* line 52, sass/screen.scss */
+/* line 58, sass/screen.scss */
 #spots_section #spots_list {
   margin: 0;
   padding: 0;
@@ -509,7 +523,7 @@ form.inline p {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 54, sass/screen.scss */
+/* line 60, sass/screen.scss */
 #spots_section #spots_list li {
   display: inline;
   float: left;
@@ -520,23 +534,23 @@ form.inline p {
 * html #spots_section #spots_list li {
   overflow-x: hidden;
 }
-/* line 57, sass/screen.scss */
+/* line 63, sass/screen.scss */
 #spots_section #spots_list li .spot {
   display: block;
 }
-/* line 59, sass/screen.scss */
+/* line 65, sass/screen.scss */
 #spots_section #spots_list li .spot .photo {
   height: 200px;
 }
-/* line 64, sass/screen.scss */
+/* line 70, sass/screen.scss */
 #spots_section #spots_list li .spot #description {
   height: 75px;
 }
-/* line 69, sass/screen.scss */
+/* line 75, sass/screen.scss */
 #spots_section #spots_list .last {
   margin-right: 0;
 }
-/* line 74, sass/screen.scss */
+/* line 80, sass/screen.scss */
 #spots_section #pagination {
   display: inline;
   float: left;
@@ -550,7 +564,7 @@ form.inline p {
   overflow-x: hidden;
 }
 
-/* line 82, sass/screen.scss */
+/* line 88, sass/screen.scss */
 #spot_titlebar {
   display: inline;
   float: left;
@@ -561,12 +575,12 @@ form.inline p {
 * html #spot_titlebar {
   overflow-x: hidden;
 }
-/* line 85, sass/screen.scss */
+/* line 91, sass/screen.scss */
 #spot_titlebar #name h2 {
   margin-bottom: 0em;
 }
 
-/* line 93, sass/screen.scss */
+/* line 99, sass/screen.scss */
 #spot_section #spot_visual {
   display: inline;
   float: left;
@@ -577,7 +591,7 @@ form.inline p {
 * html #spot_section #spot_visual {
   overflow-x: hidden;
 }
-/* line 95, sass/screen.scss */
+/* line 101, sass/screen.scss */
 #spot_section #spot_visual #photo_section {
   display: inline;
   float: left;
@@ -588,11 +602,11 @@ form.inline p {
 * html #spot_section #spot_visual #photo_section {
   overflow-x: hidden;
 }
-/* line 97, sass/screen.scss */
+/* line 103, sass/screen.scss */
 #spot_section #spot_visual #photo_section #default_photo {
   text-align: center;
 }
-/* line 100, sass/screen.scss */
+/* line 106, sass/screen.scss */
 #spot_section #spot_visual #photo_section #photos {
   margin: 0;
   padding: 0;
@@ -601,7 +615,7 @@ form.inline p {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 102, sass/screen.scss */
+/* line 108, sass/screen.scss */
 #spot_section #spot_visual #photo_section #photos li {
   display: inline;
   float: left;
@@ -612,16 +626,16 @@ form.inline p {
 * html #spot_section #spot_visual #photo_section #photos li {
   overflow-x: hidden;
 }
-/* line 105, sass/screen.scss */
+/* line 111, sass/screen.scss */
 #spot_section #spot_visual #photo_section #photos .last {
   margin-right: 0;
 }
-/* line 109, sass/screen.scss */
+/* line 115, sass/screen.scss */
 #spot_section #spot_visual #photo_section #pagination {
   margin-top: 1em;
   text-align: center;
 }
-/* line 114, sass/screen.scss */
+/* line 120, sass/screen.scss */
 #spot_section #spot_visual #map_section {
   display: inline;
   float: left;
@@ -632,12 +646,12 @@ form.inline p {
 * html #spot_section #spot_visual #map_section {
   overflow-x: hidden;
 }
-/* line 116, sass/screen.scss */
+/* line 122, sass/screen.scss */
 #spot_section #spot_visual #map_section #detail_map {
   height: 300px;
 }
 
-/* line 124, sass/screen.scss */
+/* line 130, sass/screen.scss */
 #comment_section #comments {
   display: inline;
   float: left;
@@ -648,7 +662,7 @@ form.inline p {
 * html #comment_section #comments {
   overflow-x: hidden;
 }
-/* line 127, sass/screen.scss */
+/* line 133, sass/screen.scss */
 #comment_section #comment_form {
   display: inline;
   float: left;
@@ -659,7 +673,7 @@ form.inline p {
 * html #comment_section #comment_form {
   overflow-x: hidden;
 }
-/* line 130, sass/screen.scss */
+/* line 136, sass/screen.scss */
 #comment_section .menu {
   display: inline;
   float: left;
@@ -671,7 +685,7 @@ form.inline p {
   overflow-x: hidden;
 }
 
-/* line 139, sass/screen.scss */
+/* line 145, sass/screen.scss */
 #form #entry_form {
   display: inline;
   float: left;
@@ -682,12 +696,12 @@ form.inline p {
 * html #form #entry_form {
   overflow-x: hidden;
 }
-/* line 141, sass/screen.scss */
+/* line 147, sass/screen.scss */
 #form #entry_form #position_data {
   visibility: hidden;
   display: none;
 }
-/* line 146, sass/screen.scss */
+/* line 152, sass/screen.scss */
 #form #map {
   display: inline;
   float: left;
@@ -698,8 +712,14 @@ form.inline p {
 * html #form #map {
   overflow-x: hidden;
 }
+/* line 155, sass/screen.scss */
+#form #slider {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
 
-/* line 151, sass/screen.scss */
+/* line 162, sass/screen.scss */
 .menu {
   display: inline;
   float: left;

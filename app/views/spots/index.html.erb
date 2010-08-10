@@ -3,11 +3,25 @@
 <script type="text/javascript" 	src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
 <script type="text/javascript">
 	var spots=<%= raw @spots.to_json(:include => :photos)%>;
+	$(document).ready(function() {
+  	$("#slider").slider({
+      range: "min",
+      min: 0,
+      max: 100,
+      slide: function(event, ui) {
+	map.layers[0].setOpacity(1 - ((ui.value) / 100));
+      }
+    });
+	});
 </script>
+
 <!-->End of Javascript</!-->
 <h1>Gefahrenstellen</h1>
 <section id="map_section">
 	<div id="map"></div>
+	<div id="slider">
+		
+	</div>
 	<div id="add_button">
 	<%= button_to 'Gefahrenstelle eintragen', new_spot_path, :method => :get %>	
 	</div>	
