@@ -472,7 +472,7 @@ form.inline p {
 }
 /* line 35, sass/screen.scss */
 #map_section #map {
-  height: 300px;
+  height: 500px;
   margin-left: 40px;
   margin-right: 40px;
   -moz-box-shadow: #333333 1px 1px 5px 0;
