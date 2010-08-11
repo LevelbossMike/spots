@@ -444,7 +444,6 @@ form.inline p {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  background: url('/images/grid.png?1281009097');
 }
 
 /* line 29, sass/screen.scss */
@@ -662,7 +661,22 @@ form.inline p {
 * html #comment_section #comments {
   overflow-x: hidden;
 }
-/* line 133, sass/screen.scss */
+/* line 132, sass/screen.scss */
+#comment_section #comments p {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 630px;
+}
+/* line 138, ../../../../.rvm/gems/ruby-1.8.7-head/gems/compass-0.10.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #comment_section #comments p {
+  overflow-x: hidden;
+}
+/* line 137, sass/screen.scss */
+#comment_section #comments .comment #comment_header #comment_rating {
+  background: red;
+}
+/* line 143, sass/screen.scss */
 #comment_section #comment_form {
   display: inline;
   float: left;
@@ -673,7 +687,7 @@ form.inline p {
 * html #comment_section #comment_form {
   overflow-x: hidden;
 }
-/* line 136, sass/screen.scss */
+/* line 146, sass/screen.scss */
 #comment_section .menu {
   display: inline;
   float: left;
@@ -685,7 +699,7 @@ form.inline p {
   overflow-x: hidden;
 }
 
-/* line 145, sass/screen.scss */
+/* line 155, sass/screen.scss */
 #form #entry_form {
   display: inline;
   float: left;
@@ -696,12 +710,12 @@ form.inline p {
 * html #form #entry_form {
   overflow-x: hidden;
 }
-/* line 147, sass/screen.scss */
+/* line 157, sass/screen.scss */
 #form #entry_form #position_data {
   visibility: hidden;
   display: none;
 }
-/* line 152, sass/screen.scss */
+/* line 162, sass/screen.scss */
 #form #map {
   display: inline;
   float: left;
@@ -712,14 +726,14 @@ form.inline p {
 * html #form #map {
   overflow-x: hidden;
 }
-/* line 155, sass/screen.scss */
+/* line 165, sass/screen.scss */
 #form #slider {
   margin-top: 1em;
   margin-left: 1em;
   margin-right: 1em;
 }
 
-/* line 162, sass/screen.scss */
+/* line 172, sass/screen.scss */
 .menu {
   display: inline;
   float: left;

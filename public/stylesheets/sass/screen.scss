@@ -23,7 +23,7 @@ $short_description_height: 75px;
 
 #container{
 	@include container;
-	@include showgrid;
+//	@include showgrid;
 }
 
 #header, #footer {
@@ -129,6 +129,16 @@ $short_description_height: 75px;
 
 	#comments{
 		@include column(16);
+		p{
+			@include column(16,true);
+		}
+		.comment{
+			#comment_header{
+				#comment_rating{
+					background:red;
+				}
+			}
+		}
 	}
 	#comment_form{
 		@include column(8, true);

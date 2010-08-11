@@ -5,11 +5,8 @@
 	 				<%= select("rating","",[1,2,3,4,5],{ :include_blank => false }) %>
 	 			</div>
 		</div>
-		<p style="padding: 0 0 0 85px">
-			<b><%= comment.title %></b>
-		</p>
 		<p>
-		  Von <b><%= comment.commenter %></b>, <%= comment.updated_at.to_formatted_s(:short) %>
+			<b><%= comment.title %></b>, Von <b><%= comment.commenter %></b>, <%= comment.updated_at.to_formatted_s(:short) %>
 		</p>
 	</header>
 	<body>

@@ -82,7 +82,7 @@ $(document).ready(function() {
 });
 
 
-function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
+function addMarker(lat,lng,name,description,photo_id,photo_file_name,rating,map) {
     var lonLatMarker = new OpenLayers.LonLat(lng, lat).transform(wgs84, mapprojection);
     var feature = new OpenLayers.Feature(osm, lonLatMarker);
     feature.closeBox = true;
@@ -95,8 +95,8 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
 	 									+ '</h1><img src="' + img_src + '" alt="' +
 	 									name + ' /><p class="dangerdescription">' +
 	 									description + '</p>';
-	
-    var marker = new OpenLayers.Marker(lonLatMarker);
+	var icon = new OpenLayers.Icon();
+	var marker = createMarker(lonLatMarker,rating,'/javascripts/OpenLayers-2.9.1/img/marker.png')
     marker.feature = feature;
     var markerDown = function(evt) {
 	if (this.popup == null) {
@@ -111,7 +111,7 @@ function addMarker(lat,lng,name,description,photo_id,photo_file_name,map) {
     marker.events.register("mousedown", feature, markerDown);
     dangers.addMarker(marker);
 }
-function addMarkerDescOnly(lat,lng,name,description,map) {
+function addMarkerDescOnly(lat,lng,name,description,rating,map) {
     var lonLatMarker = new OpenLayers.LonLat(lng, lat).transform(wgs84, mapprojection);
     var feature = new OpenLayers.Feature(osm, lonLatMarker);
     feature.closeBox = true;
@@ -123,7 +123,7 @@ function addMarkerDescOnly(lat,lng,name,description,map) {
 	 									+ '</h1><p class="dangerdescription">' +
 	 									description + '</p>';
 	
-    var marker = new OpenLayers.Marker(lonLatMarker);
+	var marker = createMarker(lonLatMarker,rating,'/javascripts/OpenLayers-2.9.1/img/marker.png')
     marker.feature = feature;
 
     var markerDown = function(evt) {
@@ -141,16 +141,23 @@ function addMarkerDescOnly(lat,lng,name,description,map) {
     dangers.addMarker(marker);
 }
 
+function createMarker(position,rating,iconImgSrc){
+	var icon = new OpenLayers.Icon(iconImgSrc);
+	icon.size = new OpenLayers.Size(20*(1+rating/10),30*(1+rating/10));
+    var marker = new OpenLayers.Marker(position,icon);
+	return marker;
+}
+
 function reloadMarkers(spots,map){
 	dangers.clearMarkers();
     if (spots.length > 0) {
 	for (var i=0; i < spots.length; i++) {
 		var spot = spots[i];
 		if(spot.photos.length == 0){
-			addMarkerDescOnly(spot.lat,spot.lng,spot.name,spot.description,map);
+			addMarkerDescOnly(spot.lat,spot.lng,spot.name,spot.description,spot.calc_rating,map);
 		}
 		else{
-		    addMarker(spot.lat, spot.lng, spot.name, spot.description, spot.photos[0].id, spot.photos[0].data_file_name, map);
+		    addMarker(spot.lat, spot.lng, spot.name, spot.description, spot.photos[0].id, spot.photos[0].data_file_name,spot.calc_rating, map);
 		}
 	};
     } else{
